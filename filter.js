@@ -20,17 +20,11 @@ function filter(results, filters = []) {
   var out = [];
   var resultsLength = results.length;
   var hasOptions;
-  var availableImmediately = false;
-  var freshGrad = false;
+  var availableImmediately = filters.indexOf('AVAILABLE_IMMEDIATELY') !== -1;
+  var freshGrad = !availableImmediately && filters.indexOf('FRESH_GRAD') !== -1;
 
   if (!filters.length) {
     return results;
-  }
-
-  if (filters.indexOf('AVAILABLE_IMMEDIATELY') !== -1) {
-    availableImmediately = true;
-  } else if (filters.indexOf('FRESH_GRAD') !== -1) {
-    freshGrad = true;
   }
 
   for (var i = resultsLength; i--; ) {

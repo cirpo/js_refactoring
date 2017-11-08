@@ -25,12 +25,12 @@ function filter(candidates, filters = []) {
   if (!filters.length) {
     return candidates;
   }
-  function hasFilter(candidate) {
+  function hasFilter(candidate, filter) {
     let hasFilter = false;
 
     candidate.options.forEach(option => {
       if (!availableImmediately && !freshGrad) {
-        if (filters[k].includes(option.code)) {
+        if (filter.includes(option.code)) {
           hasFilter = true;
         }
       } else if (availableImmediately && option.code === 'AVAILABLE_IMMEDIATELY') {
@@ -43,18 +43,31 @@ function filter(candidates, filters = []) {
     return hasFilter;
   }
 
-  for (var i = candidates.length; i--; ) {
-    hasOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
+  candidates.forEach(candidate => {
+    hasOptions = candidate.options && candidate.options.length > 0; //has.options
 
-    if (candidates[i].options) {
+    if (candidate.options) {
       for (var k = filters.length; k--; ) {
-        hasOptions = hasOptions && hasFilter(candidates[i]);
+        hasOptions = hasOptions && hasFilter(candidate, filters[k]);
       }
     }
     if (hasOptions) {
-      filteredCandidates.unshift(candidates[i]);
+      filteredCandidates.push(candidate);
     }
-  }
+  });
+
+  // for (var i = candidates.length; i--; ) {
+  //   hasOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
+
+  //   if (candidates[i].options) {
+  //     for (var k = filters.length; k--; ) {
+  //       hasOptions = hasOptions && hasFilter(candidates[i], filters[k]);
+  //     }
+  //   }
+  //   if (hasOptions) {
+  //     filteredCandidates.unshift(candidates[i]);
+  //   }
+  // }
   return filteredCandidates;
 }
 

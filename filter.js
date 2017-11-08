@@ -31,26 +31,19 @@ function filter(candidates, filters = []) {
     return candidates;
   }
 
-  candidates.forEach(candidate => {
-    let hasOptions = false;
-
+  return candidates.filter(candidate => {
     if (candidate.options) {
       if (isAvailableFilterSet) {
-        hasOptions = hasFilter(candidate, 'AVAILABLE_IMMEDIATELY');
+        return hasFilter(candidate, 'AVAILABLE_IMMEDIATELY');
       } else if (isFreshGradFilterSet) {
-        hasOptions = hasFilter(candidate, 'FRESH_GRAD');
+        return hasFilter(candidate, 'FRESH_GRAD');
       } else {
-        hasOptions = filters.every(filter => {
-          return hasFilter(candidate, filter);
-        });
+        return filters.every(filter => hasFilter(candidate, filter));
       }
     }
-    if (hasOptions) {
-      filteredCandidates.push(candidate);
-    }
-  });
 
-  return filteredCandidates;
+    return false;
+  });
 }
 
 module.exports = filter;

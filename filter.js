@@ -17,7 +17,7 @@
  */
 
 function filter(candidates, filters = []) {
-  var out = [];
+  var filteredCandidates = [];
   var hasOptions;
   var availableImmediately = filters.includes('AVAILABLE_IMMEDIATELY');
   var freshGrad = !availableImmediately && filters.includes('FRESH_GRAD');
@@ -48,10 +48,10 @@ function filter(candidates, filters = []) {
       }
     }
     if (hasOptions) {
-      out.unshift(candidates[i]);
+      filteredCandidates.unshift(candidates[i]);
     }
   }
-  return out;
+  return filteredCandidates;
 }
 
 module.exports = filter;

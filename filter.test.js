@@ -64,6 +64,6 @@ it('should return 5 candidate with [JAVASCRIPT]', () => {
 it('Should return results when no filter', () => {
   let candidates = filter(data, []);
   expect(candidates.length).toBe(8);
-  //candidates = filter(data);
-  //expect(candidates.length).toBe(8);
+  candidates = filter(data);
+  expect(candidates.length).toBe(8);
 });

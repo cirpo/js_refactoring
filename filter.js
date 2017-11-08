@@ -16,6 +16,18 @@
  *   happy refactory :)
  */
 
+function hasFilter(candidate, filter) {
+  let hasFilter = false;
+
+  candidate.options.forEach(option => {
+    if (filter.includes(option.code)) {
+      hasFilter = true;
+    }
+  });
+
+  return hasFilter;
+}
+
 function filter(candidates, filters = []) {
   const filteredCandidates = [];
   let hasOptions;
@@ -24,17 +36,6 @@ function filter(candidates, filters = []) {
 
   if (!filters.length) {
     return candidates;
-  }
-  function hasFilter(candidate, filter) {
-    let hasFilter = false;
-
-    candidate.options.forEach(option => {
-      if (filter.includes(option.code)) {
-        hasFilter = true;
-      }
-    });
-
-    return hasFilter;
   }
 
   candidates.forEach(candidate => {

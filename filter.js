@@ -19,7 +19,6 @@
 function filter(results, filters) {
   var out = [];
   var resultsLength = results.length;
-  var filterLength = filters.length;
   var hasOptions;
   var availableImmediately = false;
   var freshGrad = false;
@@ -38,7 +37,7 @@ function filter(results, filters) {
     hasOptions = results[i].options && results[i].options.length > 0; //has.options
 
     if (results[i].options) {
-      for (var k = filterLength; k--; ) {
+      for (var k = filters.length; k--; ) {
         // loop through filters
         var hasFilter = false;
         for (var j = results[i].options.length; j--; ) {

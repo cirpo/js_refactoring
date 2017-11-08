@@ -61,7 +61,9 @@ it('should return 5 candidate with [JAVASCRIPT]', () => {
   expect(candidates[2].name).toBe('Donald Obama');
 });
 
-it ('Should return results when no filter', () => {
-  const candidates = filter(data, []);
+it('Should return results when no filter', () => {
+  let candidates = filter(data, []);
   expect(candidates.length).toBe(8);
+  //candidates = filter(data);
+  //expect(candidates.length).toBe(8);
 });

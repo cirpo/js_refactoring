@@ -44,30 +44,18 @@ function filter(candidates, filters = []) {
   }
 
   candidates.forEach(candidate => {
-    hasOptions = candidate.options && candidate.options.length > 0; //has.options
+    hasOptions = candidate.options && candidate.options.length;
 
     if (candidate.options) {
-      for (var k = filters.length; k--; ) {
-        hasOptions = hasOptions && hasFilter(candidate, filters[k]);
-      }
+      filters.forEach(filter => {
+        hasOptions = hasOptions && hasFilter(candidate, filter);
+      });
     }
     if (hasOptions) {
       filteredCandidates.push(candidate);
     }
   });
 
-  // for (var i = candidates.length; i--; ) {
-  //   hasOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
-
-  //   if (candidates[i].options) {
-  //     for (var k = filters.length; k--; ) {
-  //       hasOptions = hasOptions && hasFilter(candidates[i], filters[k]);
-  //     }
-  //   }
-  //   if (hasOptions) {
-  //     filteredCandidates.unshift(candidates[i]);
-  //   }
-  // }
   return filteredCandidates;
 }
 

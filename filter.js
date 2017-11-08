@@ -29,11 +29,7 @@ function filter(candidates, filters = []) {
     let hasFilter = false;
 
     candidate.options.forEach(option => {
-      if (!freshGrad) {
-        if (filter.includes(option.code)) {
-          hasFilter = true;
-        }
-      } else if (freshGrad && option.code === 'FRESH_GRAD') {
+      if (filter.includes(option.code)) {
         hasFilter = true;
       }
     });
@@ -47,6 +43,8 @@ function filter(candidates, filters = []) {
     if (candidate.options) {
       if (availableImmediately) {
         hasOptions = hasFilter(candidate, 'AVAILABLE_IMMEDIATELY');
+      } else if (freshGrad) {
+        hasOptions = hasFilter(candidate, 'FRESH_GRAD');
       } else {
         filters.forEach(filter => {
           hasOptions = hasOptions && hasFilter(candidate, filter);

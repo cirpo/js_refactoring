@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Julian Assange",
+    "options": [
+      {
+        "code": "AVAILABLE_IMMEDIATELY"
+      },
+      { "code": "FRESH_GRAD" },
+      {
+        "code": "JUNIOR"
+      },
+      {
+        "code": "JAVASCRIPT"
+      },
+      {
+        "code": "AWS"
+      },
+      {
+        "code": "REACT"
+      }
+    ]
+  },
+  {
+    "name": "Kelly Diamond",
+    "options": [
+      {
+        "code": "FRESH_GRAD"
+      },
+      {
+        "code": "SENIOR"
+      },
+      {
+        "code": "JAVASCRIPT"
+      },
+      {
+        "code": "AWS"
+      },
+      {
+        "code": "REACT"
+      }
+    ]
+  },
+  {
+    "name": "Marc Brown",
+    "options": [
+      {
+        "code": "AVAILABLE_IMMEDIATELY"
+      },
+      {
+        "code": "JUNIOR"
+      },
+      {
+        "code": "PHP"
+      }
+    ]
+  },
+  {
+    "name": "Donald Obama",
+    "options": [
+      {
+        "code": "JAVASCRIPT"
+      },
+      {
+        "code": "SENIOR"
+      },
+      {
+        "code": "AWS"
+      }
+    ]
+  },
+  {
+    "name": "Maria Bianchi",
+    "options": [
+      {
+        "code": "AVAILABLE_IMMEDIATELY"
+      },
+      {
+        "code": "FRESH_GRAD"
+      },
+      {
+        "code": "MID"
+      },
+      {
+        "code": "JAVASCRIPT"
+      },
+      {
+        "code": "PHP"
+      }
+    ]
+  },
+  {
+    "name": "Jordi Boggiano",
+    "options": [
+      {
+        "code": "SENIOR"
+      },
+      {
+        "code": "PHP"
+      },
+      {
+        "code": "AWS"
+      }
+    ]
+  },
+  {
+    "name": "Winnie the Pooh",
+    "options": [
+      {
+        "code": "FRESH_GRAD"
+      },
+      {
+        "code": "JAVASCRIPT"
+      }
+    ]
+  },
+  {
+    "name": "Franz",
+    "options": []
+  }
+]

@@ -30,7 +30,6 @@ function hasFilter(candidate, filter) {
 
 function filter(candidates, filters = []) {
   const filteredCandidates = [];
-  let hasOptions;
   const isAvailableFilterSet = filters.includes('AVAILABLE_IMMEDIATELY');
   const isFreshGradFilterSet = !isAvailableFilterSet && filters.includes('FRESH_GRAD');
 
@@ -39,7 +38,7 @@ function filter(candidates, filters = []) {
   }
 
   candidates.forEach(candidate => {
-    hasOptions = candidate.options && candidate.options.length;
+    let hasOptions = false;
 
     if (candidate.options) {
       if (isAvailableFilterSet) {
@@ -47,8 +46,8 @@ function filter(candidates, filters = []) {
       } else if (isFreshGradFilterSet) {
         hasOptions = hasFilter(candidate, 'FRESH_GRAD');
       } else {
-        filters.forEach(filter => {
-          hasOptions = hasOptions && hasFilter(candidate, filter);
+        hasOptions = filters.every(filter => {
+          return hasFilter(candidate, filter);
         });
       }
     }

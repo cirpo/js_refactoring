@@ -17,10 +17,10 @@
  */
 
 function filter(candidates, filters = []) {
-  var filteredCandidates = [];
-  var hasOptions;
-  var availableImmediately = filters.includes('AVAILABLE_IMMEDIATELY');
-  var freshGrad = !availableImmediately && filters.includes('FRESH_GRAD');
+  const filteredCandidates = [];
+  let hasOptions;
+  const isAvailableFilterSet = filters.includes('AVAILABLE_IMMEDIATELY');
+  const isFreshGradFilterSet = !isAvailableFilterSet && filters.includes('FRESH_GRAD');
 
   if (!filters.length) {
     return candidates;
@@ -41,9 +41,9 @@ function filter(candidates, filters = []) {
     hasOptions = candidate.options && candidate.options.length;
 
     if (candidate.options) {
-      if (availableImmediately) {
+      if (isAvailableFilterSet) {
         hasOptions = hasFilter(candidate, 'AVAILABLE_IMMEDIATELY');
-      } else if (freshGrad) {
+      } else if (isFreshGradFilterSet) {
         hasOptions = hasFilter(candidate, 'FRESH_GRAD');
       } else {
         filters.forEach(filter => {

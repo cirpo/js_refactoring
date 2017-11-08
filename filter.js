@@ -17,15 +17,9 @@
  */
 
 function hasFilter(candidate, filter) {
-  let hasFilter = false;
-
-  candidate.options.forEach(option => {
-    if (filter.includes(option.code)) {
-      hasFilter = true;
-    }
+  return candidate.options.some(option => {
+    return filter.includes(option.code);
   });
-
-  return hasFilter;
 }
 
 function filter(candidates, filters = []) {

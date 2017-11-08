@@ -16,7 +16,7 @@
  *   happy refactory :)
  */
 
-function filter(results, filters) {
+function filter(results, filters = []) {
   var out = [];
   var resultsLength = results.length;
   var hasOptions;

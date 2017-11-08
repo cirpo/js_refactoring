@@ -15,14 +15,9 @@
  *  
  *   happy refactory :)
  */
+const hasFilter = (options = [], filter) => options.some(options => filter.includes(options.code));
 
-function hasFilter(candidate, filter) {
-  return candidate.options.some(option => {
-    return filter.includes(option.code);
-  });
-}
-
-function filter(candidates, filters = []) {
+module.exports = function filterCandidates(candidates, filters = []) {
   const filteredCandidates = [];
   const isAvailableFilterSet = filters.includes('AVAILABLE_IMMEDIATELY');
   const isFreshGradFilterSet = !isAvailableFilterSet && filters.includes('FRESH_GRAD');
@@ -31,19 +26,15 @@ function filter(candidates, filters = []) {
     return candidates;
   }
 
-  return candidates.filter(candidate => {
-    if (candidate.options) {
-      if (isAvailableFilterSet) {
-        return hasFilter(candidate, 'AVAILABLE_IMMEDIATELY');
-      } else if (isFreshGradFilterSet) {
-        return hasFilter(candidate, 'FRESH_GRAD');
-      } else {
-        return filters.every(filter => hasFilter(candidate, filter));
-      }
+  return candidates.filter(({ options = [] }) => {
+    if (isAvailableFilterSet) {
+      return hasFilter(options, 'AVAILABLE_IMMEDIATELY');
     }
 
-    return false;
-  });
-}
+    if (isFreshGradFilterSet) {
+      return hasFilter(options, 'FRESH_GRAD');
+    }
 
-module.exports = filter;
+    return filters.every(filter => hasFilter(options, filter));
+  });
+};

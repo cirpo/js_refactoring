@@ -25,19 +25,21 @@ function filter(candidates, filters = []) {
   if (!filters.length) {
     return candidates;
   }
-  function hasFilter() {
+  function hasFilter(candidate) {
     let hasFilter = false;
-    for (var j = candidates[i].options.length; j--; ) {
+
+    candidate.options.forEach(option => {
       if (!availableImmediately && !freshGrad) {
-        if (filters[k].indexOf(candidates[i].options[j].code) !== -1) {
+        if (filters[k].includes(option.code)) {
           hasFilter = true;
         }
-      } else if (availableImmediately && candidates[i].options[j].code === 'AVAILABLE_IMMEDIATELY') {
+      } else if (availableImmediately && option.code === 'AVAILABLE_IMMEDIATELY') {
         hasFilter = true;
-      } else if (freshGrad && candidates[i].options[j].code === 'FRESH_GRAD') {
+      } else if (freshGrad && option.code === 'FRESH_GRAD') {
         hasFilter = true;
       }
-    }
+    });
+
     return hasFilter;
   }
 
@@ -46,7 +48,7 @@ function filter(candidates, filters = []) {
 
     if (candidates[i].options) {
       for (var k = filters.length; k--; ) {
-        hasOptions = hasOptions && hasFilter();
+        hasOptions = hasOptions && hasFilter(candidates[i]);
       }
     }
     if (hasOptions) {
